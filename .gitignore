@@ -1,5 +1,15 @@
 venv/
+Venv/
 __pycache__/
 *.pyc
 .vscode/
 .env
+
+frontend/node_modules/
+frontend/dist/
+
+node_modules/
+dist/
+
+uploads/*
+!uploads/.gitkeep
