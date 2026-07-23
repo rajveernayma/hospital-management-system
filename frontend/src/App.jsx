@@ -7,7 +7,7 @@ import AddPatient from "./pages/AddPatient";
 import Doctors from "./pages/Doctors";
 import Appointments from "./pages/Appointments";
 import Dashboard from "./pages/Dashboard";
-import Login from "./pages/Login";
+import Login from "./pages/login";
 import Prescription from "./pages/Prescription";
 import DoctorPanel from "./pages/DoctorPanel";
 import PatientPanel from "./pages/PatientPanel";
