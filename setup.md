@@ -46,7 +46,7 @@ uvicorn app:app --reload
 ### Open Swagger API
 
 ```
-http://127.0.0.1:8000/docs
+https://hospital-management-system-lvu6.onrender.com/docs
 ```
 
 ## Features
