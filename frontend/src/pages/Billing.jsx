@@ -12,7 +12,7 @@ const [bills,setBills]=useState([]);
 useEffect(()=>{
 
 
-fetch("http://127.0.0.1:8000/billing")
+fetch("https://hospital-management-system-lvu6.onrender.com/billing")
 
 
 .then(res=>res.json())
@@ -39,7 +39,7 @@ async function payBill(id){
 
 await fetch(
 
-`http://127.0.0.1:8000/billing/${id}/pay`,
+`https://hospital-management-system-lvu6.onrender.com/billing/${id}/pay`,
 
 {
 

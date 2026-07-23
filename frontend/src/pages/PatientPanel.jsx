@@ -13,7 +13,7 @@ function PatientPanel() {
     function loadQueue() {
 
         fetch(
-            `http://127.0.0.1:8000/appointments/queue/${user.patient_id}`
+            `https://hospital-management-system-lvu6.onrender.com/appointments/queue/${user.patient_id}`
         )
             .then(res => res.json())
             .then(data => {
@@ -25,7 +25,7 @@ function PatientPanel() {
     function loadReports() {
 
         fetch(
-            `http://127.0.0.1:8000/files/${user.patient_id}`
+            `https://hospital-management-system-lvu6.onrender.com/files/${user.patient_id}`
         )
             .then(res => res.json())
             .then(data => {
@@ -37,7 +37,7 @@ function PatientPanel() {
     function loadRecords() {
 
         fetch(
-            `http://127.0.0.1:8000/medical-records/${user.patient_id}`
+            `https://hospital-management-system-lvu6.onrender.com/medical-records/${user.patient_id}`
         )
             .then(res => res.json())
             .then(data => {

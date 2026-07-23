@@ -11,7 +11,7 @@ const [appointments,setAppointments]=useState([]);
 
 useEffect(()=>{
 
-fetch("http://127.0.0.1:8000/appointments")
+fetch("https://hospital-management-system-lvu6.onrender.com/appointments")
 
 .then(res=>res.json())
 
@@ -32,7 +32,7 @@ async function completeAppointment(id){
 
 
 await fetch(
-`http://127.0.0.1:8000/appointments/${id}/complete`,
+`https://hospital-management-system-lvu6.onrender.com/appointments/${id}/complete`,
 {
 method:"PUT"
 }

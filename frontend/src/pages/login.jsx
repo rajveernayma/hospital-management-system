@@ -18,7 +18,7 @@ async function login(){
 
 const response = await fetch(
 
-"http://127.0.0.1:8000/auth/login",
+"https://hospital-management-system-lvu6.onrender.com/auth/login",
 
 {
 

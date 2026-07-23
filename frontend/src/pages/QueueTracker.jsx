@@ -20,7 +20,7 @@ async function track(){
 
 const res = await fetch(
 
-`http://127.0.0.1:8000/appointments/track/${id}`
+`https://hospital-management-system-lvu6.onrender.com/appointments/track/${id}`
 
 );
 

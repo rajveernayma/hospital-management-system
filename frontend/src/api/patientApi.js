@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://hospital-management-system-lvu6.onrender.com";
 
 export const getPatients = async () => {
     const response = await axios.get(`${API_URL}/patients`);

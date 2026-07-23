@@ -14,7 +14,7 @@ const getPatients=async()=>{
 
 
 const response = await fetch(
-"http://127.0.0.1:8000/patients"
+"https://hospital-management-system-lvu6.onrender.com/patients"
 );
 
 
@@ -57,7 +57,7 @@ return;
 
 
 await fetch(
-`http://127.0.0.1:8000/patients/${id}`,
+`https://hospital-management-system-lvu6.onrender.com/patients/${id}`,
 {
 
 method:"DELETE"

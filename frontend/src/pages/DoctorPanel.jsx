@@ -15,7 +15,7 @@ function DoctorPanel() {
 
         axios
             .get(
-                `http://127.0.0.1:8000/appointments/queue/${user.doctor_id}`
+                `https://hospital-management-system-lvu6.onrender.com/appointments/queue/${user.doctor_id}`
             )
             .then(res => {
 
@@ -48,7 +48,7 @@ function DoctorPanel() {
 
         axios
             .put(
-                `http://127.0.0.1:8000/appointments/${id}/complete`
+                `https://hospital-management-system-lvu6.onrender.com/appointments/${id}/complete`
             )
             .then(() => {
 

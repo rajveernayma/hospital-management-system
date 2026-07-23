@@ -22,7 +22,7 @@ function BookAppointment() {
         try {
 
             const response = await fetch(
-                "http://127.0.0.1:8000/doctors/list"
+                "https://hospital-management-system-lvu6.onrender.com/doctors/list"
             );
 
             const data = await response.json();
@@ -53,7 +53,7 @@ function BookAppointment() {
 
             const response = await fetch(
 
-                `http://127.0.0.1:8000/doctors/availability/${id}`
+                `https://hospital-management-system-lvu6.onrender.com/doctors/availability/${id}`
 
             );
 
@@ -113,7 +113,7 @@ function BookAppointment() {
 
             const orderResponse=await fetch(
 
-                "http://127.0.0.1:8000/payment/create",
+                "https://hospital-management-system-lvu6.onrender.com/payment/create",
 
                 {
 
@@ -155,7 +155,7 @@ function BookAppointment() {
 
                     const verify=await fetch(
 
-                        "http://127.0.0.1:8000/payment/verify",
+                        "https://hospital-management-system-lvu6.onrender.com/payment/verify",
 
                         {
 
@@ -179,7 +179,7 @@ function BookAppointment() {
 
                         const appointment=await fetch(
 
-                            "http://127.0.0.1:8000/appointments/book",
+                            "https://hospital-management-system-lvu6.onrender.com/appointments/book",
 
                             {
 

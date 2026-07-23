@@ -20,7 +20,7 @@ const [data,setData]=useState([]);
 useEffect(()=>{
 
 
-fetch("http://127.0.0.1:8000/prescriptions")
+fetch("https://hospital-management-system-lvu6.onrender.com/prescriptions")
 
 
 .then(res=>res.json())

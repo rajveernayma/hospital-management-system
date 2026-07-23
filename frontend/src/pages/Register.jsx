@@ -45,7 +45,7 @@ async function register(){
 
 await fetch(
 
-"http://127.0.0.1:8000/auth/register",
+"https://hospital-management-system-lvu6.onrender.com/auth/register",
 
 {
 

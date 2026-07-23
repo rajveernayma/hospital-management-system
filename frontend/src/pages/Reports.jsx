@@ -25,7 +25,7 @@ function loadReports(){
 
 fetch(
 
-`http://127.0.0.1:8000/files/${user.patient_id}`
+`https://hospital-management-system-lvu6.onrender.com/files/${user.patient_id}`
 
 )
 
@@ -92,7 +92,7 @@ file
 
 const res=await fetch(
 
-"http://127.0.0.1:8000/files/upload",
+"https://hospital-management-system-lvu6.onrender.com/files/upload",
 
 {
 

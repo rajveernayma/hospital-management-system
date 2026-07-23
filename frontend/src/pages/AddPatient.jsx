@@ -26,7 +26,7 @@ setPatient({
 const addPatient=async()=>{
 
 
-await fetch("http://127.0.0.1:8000/patients",{
+await fetch("https://hospital-management-system-lvu6.onrender.com/patients",{
 
 method:"POST",
 
