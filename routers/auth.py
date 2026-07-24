@@ -1,14 +1,65 @@
 from fastapi import APIRouter, Body
 from sqlalchemy import text
+from database.db import get_db
 
-# ... keep the rest of your imports
+router = APIRouter(
+    prefix="/auth",
+    tags=["Authentication"]
+)
+
+# ======================
+# REGISTER PATIENT
+# ======================
+@router.post("/register")
+def register(data: dict = Body(...)):
+    db = next(get_db())
+
+    try:
+        db.execute(
+            text("""
+                INSERT INTO users
+                (
+                    name,
+                    email,
+                    password,
+                    role,
+                    patient_id
+                )
+                VALUES
+                (
+                    :name,
+                    :email,
+                    :password,
+                    'PATIENT',
+                    :patient_id
+                )
+            """),
+            data
+        )
+
+        db.commit()
+
+        return {
+            "success": True,
+            "message": "Registration Successful"
+        }
+
+    except Exception as e:
+        db.rollback()
+        return {
+            "success": False,
+            "error": str(e)
+        }
 
 
+# ======================
+# LOGIN
+# ======================
 @router.post("/login")
 def login(data: dict = Body(...)):
-    try:
-        db = next(get_db())
+    db = next(get_db())
 
+    try:
         result = db.execute(
             text("""
                 SELECT
@@ -23,10 +74,7 @@ def login(data: dict = Body(...)):
                 WHERE email = :email
                 AND password = :password
             """),
-            {
-                "email": data.get("email"),
-                "password": data.get("password")
-            }
+            data
         ).fetchone()
 
         if result is None:
@@ -50,8 +98,7 @@ def login(data: dict = Body(...)):
         }
 
     except Exception as e:
-        print("LOGIN ERROR:", str(e))
         return {
             "success": False,
-            "message": str(e)
+            "error": str(e)
         }
