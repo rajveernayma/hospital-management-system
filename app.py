@@ -1,9 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-# ======================
-# ROUTERS IMPORT
-# ======================
 from routers import (
     auth,
     patients,
@@ -17,42 +14,35 @@ from routers import (
     files,
 )
 
-# ======================
-# APP CONFIG
-# ======================
 app = FastAPI(
     title="MediFlow Hospital Management System",
     description="FastAPI + PostgreSQL Hospital ERP Backend",
     version="2.0",
 )
 
-# ======================
-# CORS
-# ======================
+origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+
+    # Your deployed frontend
+    "https://hospital-management-system-pesy.vercel.app",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "https://hospital-management-system-pesy.vercel.app",
-    ],
+    allow_origins=origins,
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# ======================
-# HOME API
-# ======================
 @app.get("/")
 def home():
     return {
         "message": "MediFlow Backend Running Successfully 🚀"
     }
 
-# ======================
-# CONNECT ROUTERS
-# ======================
 app.include_router(auth.router)
 app.include_router(patients.router)
 app.include_router(doctors.router)

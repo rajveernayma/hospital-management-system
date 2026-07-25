@@ -4,10 +4,9 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Automatically choose backend
-  const API_URL = import.meta.env.DEV
-    ? "http://localhost:8000"
-    : "https://hospital-management-system-lvu6.onrender.com";
+  // Render Backend URL
+  const API_URL = "https://hospital-management-system-lvu6.onrender.com";
+  console.log("API URL =", API_URL);
 
   async function login() {
     try {
@@ -17,8 +16,8 @@ function Login() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email,
-          password,
+          email: email,
+          password: password,
         }),
       });
 
@@ -29,12 +28,14 @@ function Login() {
       if (data.success) {
         localStorage.setItem("user", JSON.stringify(data.user));
 
+        alert("Login Successful ✅");
+
         window.location.reload();
       } else {
         alert(data.message || "Invalid Email or Password");
       }
     } catch (error) {
-      console.error(error);
+      console.error("Login Error:", error);
       alert("Cannot connect to backend.");
     }
   }
@@ -60,7 +61,9 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button onClick={login}>Login</button>
+        <button onClick={login}>
+          Login
+        </button>
       </div>
     </div>
   );
