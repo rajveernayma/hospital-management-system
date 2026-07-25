@@ -7,21 +7,38 @@ DATABASE_URL = os.getenv(
     "postgresql+psycopg2://postgres:%40Rajveer0219%21@localhost:5432/hospital_db"
 )
 
-# Render gives "postgres://..." or "postgresql://..."
+# Convert Render DATABASE_URL to SQLAlchemy format
 if DATABASE_URL.startswith("postgres://"):
-    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+psycopg2://", 1)
+    DATABASE_URL = DATABASE_URL.replace(
+        "postgres://",
+        "postgresql+psycopg2://",
+        1
+    )
+
 elif DATABASE_URL.startswith("postgresql://") and "+psycopg2" not in DATABASE_URL:
-    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+psycopg2://", 1)
+    DATABASE_URL = DATABASE_URL.replace(
+        "postgresql://",
+        "postgresql+psycopg2://",
+        1
+    )
 
-print("DATABASE_URL:", DATABASE_URL)
+print("Using Database:", DATABASE_URL)
 
-engine = create_engine(DATABASE_URL)
+engine = create_engine(
+    DATABASE_URL,
+    pool_pre_ping=True,
+    pool_recycle=300,
+    pool_size=5,
+    max_overflow=10,
+    pool_timeout=30
+)
 
 SessionLocal = sessionmaker(
     autocommit=False,
     autoflush=False,
     bind=engine
 )
+
 
 def get_db():
     db = SessionLocal()
